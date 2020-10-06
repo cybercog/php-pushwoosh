@@ -6,11 +6,9 @@ php:
   - 7.1
   - 7.2
   - 7.3
-  - 7.4
-allow_failures:
-  - php: 7.4
 
 before_install:
+  - echo "memory_limit=2G" >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
   - curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
   - sudo apt-get install --yes nodejs
   - npm install -g grunt-cli
