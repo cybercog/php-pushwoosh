@@ -2,12 +2,12 @@
 
 > A PHP Library to easily send push notifications with the Pushwoosh REST Web Services.
 
-[![Total Downloads](https://img.shields.io/packagist/dt/gomoob/php-pushwoosh.svg?style=flat-square)](https://packagist.org/packages/gomoob/php-pushwoosh) 
-[![Latest Stable Version](https://img.shields.io/packagist/v/gomoob/php-pushwoosh.svg?style=flat-square)](https://packagist.org/packages/gomoob/php-pushwoosh) 
-[![Build Status](https://img.shields.io/travis/gomoob/php-pushwoosh.svg?style=flat-square)](https://travis-ci.org/gomoob/php-pushwoosh)
-[![Coverage](https://img.shields.io/coveralls/gomoob/php-pushwoosh.svg?style=flat-square)](https://coveralls.io/r/gomoob/php-pushwoosh?branch=master)
-[![Code Climate](https://img.shields.io/codeclimate/github/gomoob/php-pushwoosh.svg?style=flat-square)](https://codeclimate.com/github/gomoob/php-pushwoosh)
-[![License](https://img.shields.io/packagist/l/gomoob/php-pushwoosh.svg?style=flat-square)](https://packagist.org/packages/gomoob/php-pushwoosh)
+[![Total Downloads](https://img.shields.io/packagist/dt/cybercog/php-pushwoosh.svg?style=flat-square)](https://packagist.org/packages/cybercog/php-pushwoosh) 
+[![Latest Stable Version](https://img.shields.io/packagist/v/cybercog/php-pushwoosh.svg?style=flat-square)](https://packagist.org/packages/cybercog/php-pushwoosh) 
+[![Build Status](https://img.shields.io/travis/cybercog/php-pushwoosh.svg?style=flat-square)](https://travis-ci.org/cybercog/php-pushwoosh)
+[![Coverage](https://img.shields.io/coveralls/cybercog/php-pushwoosh.svg?style=flat-square)](https://coveralls.io/r/cybercog/php-pushwoosh?branch=master)
+[![Code Climate](https://img.shields.io/codeclimate/github/cybercog/php-pushwoosh.svg?style=flat-square)](https://codeclimate.com/github/cybercog/php-pushwoosh)
+[![License](https://img.shields.io/packagist/l/cybercog/php-pushwoosh.svg?style=flat-square)](https://packagist.org/packages/cybercog/php-pushwoosh)
 
 ## First sample, creating a Pushwoosh message
 
