@@ -101,7 +101,7 @@ class GetTagsRequest extends AbstractRequest
      *
      * @param string $application the Pushwoosh application ID where to send the message to.
      *
-     * @return \Gomoob\Pushwoosh\Model\Request\CreateMessageRequest this instance.
+     * @return \Gomoob\Pushwoosh\Model\Request\GetTagsRequest this instance.
      */
     public function setApplication($application)
     {
@@ -115,7 +115,7 @@ class GetTagsRequest extends AbstractRequest
      *
      * @param string $hwid the the hardware device id used in registerDevice function call.
      *
-     * @return \Gomoob\Pushwoosh\Model\Request\GetNearestZoneRequest this instance.
+     * @return \Gomoob\Pushwoosh\Model\Request\GetTagsRequest this instance.
      */
     public function setHwid($hwid)
     {

@@ -118,7 +118,7 @@ class SetBadgeRequest extends AbstractRequest
      *
      * @param string $application Pushwoosh application ID where you send the message to.
      *
-     * @return \Gomoob\Pushwoosh\Model\Request\GetNearestZoneRequest this instance.
+     * @return \Gomoob\Pushwoosh\Model\Request\SetBadgeRequest this instance.
      */
     public function setApplication($application)
     {
@@ -144,7 +144,7 @@ class SetBadgeRequest extends AbstractRequest
      *
      * @param string $hwid the the hardware device id used in registerDevice function call.
      *
-     * @return \Gomoob\Pushwoosh\Model\Request\GetNearestZoneRequest this instance.
+     * @return \Gomoob\Pushwoosh\Model\Request\SetBadgeRequest this instance.
      */
     public function setHwid($hwid)
     {
