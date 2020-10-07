@@ -68,14 +68,14 @@ class PushwooshMock implements IPushwoosh
      *
      * @var array
      */
-    private $pushwhooshRequests = [];
+    private $pushwooshRequests = [];
 
     /**
      * {@inheritDoc}
      */
     public function createMessage(CreateMessageRequest $createMessageRequest)
     {
-        $this->pushwhooshRequests[] = $createMessageRequest;
+        $this->pushwooshRequests[] = $createMessageRequest;
 
         return CreateMessageResponse::create(
             json_decode('{
@@ -107,7 +107,7 @@ class PushwooshMock implements IPushwoosh
      */
     public function deleteMessage(DeleteMessageRequest $deleteMessageRequest)
     {
-        $this->pushwhooshRequests[] = $deleteMessageRequest;
+        $this->pushwooshRequests[] = $deleteMessageRequest;
 
         return DeleteMessageResponse::create(
             json_decode('{
@@ -146,7 +146,7 @@ class PushwooshMock implements IPushwoosh
      */
     public function getNearestZone(GetNearestZoneRequest $getNearestZoneRequest)
     {
-        $this->pushwhooshRequests[] = $getNearestZoneRequest;
+        $this->pushwooshRequests[] = $getNearestZoneRequest;
 
         return GetNearestZoneResponse::create(
             json_decode('{
@@ -170,7 +170,7 @@ class PushwooshMock implements IPushwoosh
      */
     public function getPushwooshRequests()
     {
-        return $this->pushwhooshRequests;
+        return $this->pushwooshRequests;
     }
 
     /**
@@ -178,7 +178,7 @@ class PushwooshMock implements IPushwoosh
      */
     public function clear()
     {
-        $this->pushwhooshRequests = [];
+        $this->pushwooshRequests = [];
     }
 
     /**
@@ -186,7 +186,7 @@ class PushwooshMock implements IPushwoosh
      */
     public function getTags(GetTagsRequest $getTagsRequest)
     {
-        $this->pushwhooshRequests[] = $getTagsRequest;
+        $this->pushwooshRequests[] = $getTagsRequest;
 
         return GetTagsResponse::create(
             json_decode('{
@@ -206,7 +206,7 @@ class PushwooshMock implements IPushwoosh
      */
     public function pushStat(PushStatRequest $pushStatRequest)
     {
-        $this->pushwhooshRequests[] = $pushStatRequest;
+        $this->pushwooshRequests[] = $pushStatRequest;
 
         return PushStatResponse::create(
             json_decode('{
@@ -221,7 +221,7 @@ class PushwooshMock implements IPushwoosh
      */
     public function registerDevice(RegisterDeviceRequest $registerDeviceRequest)
     {
-        $this->pushwhooshRequests[] = $registerDeviceRequest;
+        $this->pushwooshRequests[] = $registerDeviceRequest;
 
         return RegisterDeviceResponse::create(
             json_decode('{
@@ -267,7 +267,7 @@ class PushwooshMock implements IPushwoosh
      */
     public function setBadge(SetBadgeRequest $setBadgeRequest)
     {
-        $this->pushwhooshRequests[] = $setBadgeRequest;
+        $this->pushwooshRequests[] = $setBadgeRequest;
 
         return SetBadgeResponse::create(
             json_decode('{
@@ -282,7 +282,7 @@ class PushwooshMock implements IPushwoosh
      */
     public function setTags(SetTagsRequest $setTagsRequest)
     {
-        $this->pushwhooshRequests[] = $setTagsRequest;
+        $this->pushwooshRequests[] = $setTagsRequest;
 
         return SetTagsResponse::create(
             json_decode('{
@@ -298,7 +298,7 @@ class PushwooshMock implements IPushwoosh
      */
     public function unregisterDevice(UnregisterDeviceRequest $unregisterDeviceRequest)
     {
-        $this->pushwhooshRequests[] = $unregisterDeviceRequest;
+        $this->pushwooshRequests[] = $unregisterDeviceRequest;
 
         return UnregisterDeviceResponse::create(
             json_decode('{

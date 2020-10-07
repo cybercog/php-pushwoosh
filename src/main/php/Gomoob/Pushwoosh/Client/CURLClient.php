@@ -111,7 +111,7 @@ class CURLClient implements ICURLClient
 
         // If an error has been encountered
         if ($error) {
-            // Get additional informations about the failed CURL transfert
+            // Get additional information about the failed CURL transfer
             $info = $this->curlRequest->getInfo();
 
             // Close the CURL handle
@@ -134,7 +134,7 @@ class CURLClient implements ICURLClient
         // This should never append but we want to be 100% sure our response is well formatted for the PHP Pushwoosh
         // APIs. If its not the case we throw an exception with as much details as possible.
         if (!is_array($jsonResult)) {
-            // Get additional informations about the failed CURL transfert
+            // Get additional information about the failed CURL transfer
             $info = $this->curlRequest->getInfo();
 
             // Close the CURL handle
