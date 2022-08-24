@@ -105,4 +105,12 @@ class PlatformTest extends TestCase
     {
         $this->assertSame(8, Platform::windows8()->getValue());
     }
+
+    /**
+     * Test method for the <code>#android()</code> function.
+     */
+    public function testHuawei()
+    {
+        $this->assertSame(17, Platform::huawei()->getValue());
+    }
 }

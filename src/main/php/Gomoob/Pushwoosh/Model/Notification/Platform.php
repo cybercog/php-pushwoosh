@@ -61,6 +61,11 @@ class Platform
     const FIREFOX = 12;
 
     /**
+     * @const string Huawei
+     */
+    const HUAWEI = 17;
+
+    /**
      * The value of the platform, this can be equal to :
      *  - 1 : iOS
      *  - 2 : BlackBerry
@@ -73,7 +78,7 @@ class Platform
      *  - 10: Safari
      *  - 11: Chrome
      *  - 12: Firefox
-     *
+     *  - 17: Huawei
      * @var int
      */
     private $value;
@@ -198,6 +203,11 @@ class Platform
         return new Platform(self::FIREFOX);
     }
 
+    public static function huawei()
+    {
+        return new Platform(self::HUAWEI);
+    }
+
     /**
      * Gets the value of the plateform, this can be equal to :
      *  - 1 : iOS
@@ -211,6 +221,7 @@ class Platform
      *  - 10: Safari
      *  - 11: Chrome
      *  - 12: Firefox
+     *  - 17: Huawei
      *
      * @return int the value of the platform.
      */
