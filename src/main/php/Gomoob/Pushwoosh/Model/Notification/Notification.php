@@ -261,6 +261,11 @@ class Notification implements \JsonSerializable
     private $wP;
 
     /**
+     * @var Huawei
+     */
+    private $huawei;
+
+    /**
      * Utility function used to create a new notification.
      *
      * @return \Gomoob\Pushwoosh\Model\Notification\Notification the new created notification.
@@ -647,6 +652,14 @@ class Notification implements \JsonSerializable
     {
         return $this->wP;
     }
+
+    /**
+     * @return Huawei
+     */
+    public function getHuawei()
+    {
+        return $this->huawei;
+    }
     
     /**
      * Creates a JSON representation of this request.
@@ -707,7 +720,8 @@ class Notification implements \JsonSerializable
             $this->mac,
             $this->safari,
             $this->wNS,
-            $this->wP
+            $this->wP,
+            $this->huawei
         );
     }
 
@@ -1159,6 +1173,17 @@ class Notification implements \JsonSerializable
     public function setWP(WP $wP)
     {
         $this->wP = $wP;
+
+        return $this;
+    }
+
+    /**
+     * @param Huawei $huawei
+     * @return $this
+     */
+    public function setHuawei(Huawei $huawei)
+    {
+        $this->huawei = $huawei;
 
         return $this;
     }

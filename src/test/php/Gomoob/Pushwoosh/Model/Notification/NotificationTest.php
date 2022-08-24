@@ -97,16 +97,18 @@ class NotificationTest extends TestCase
         $platform0 = Platform::amazon();
         $platform1 = Platform::android();
         $platform2 = Platform::blackBerry();
+        $platform3 = Platform::huawei();
 
         // Test for the 'addPlatform' method
         $notification = new Notification();
         $this->assertNull($notification->getPlatforms());
-        $this->assertSame($notification, $notification->setPlatforms([$platform0, $platform1, $platform2]));
+        $this->assertSame($notification, $notification->setPlatforms([$platform0, $platform1, $platform2, $platform3]));
         $platforms = $notification->getPlatforms();
-        $this->assertCount(3, $platforms);
+        $this->assertCount(4, $platforms);
         $this->assertSame($platform0, $platforms[0]);
         $this->assertSame($platform1, $platforms[1]);
         $this->assertSame($platform2, $platforms[2]);
+        $this->assertSame($platform3, $platforms[3]);
 
         // Test for the 'setPlatforms' method
         $notification = new Notification();
@@ -114,11 +116,13 @@ class NotificationTest extends TestCase
         $this->assertSame($notification, $notification->addPlatform($platform0));
         $this->assertSame($notification, $notification->addPlatform($platform1));
         $this->assertSame($notification, $notification->addPlatform($platform2));
+        $this->assertSame($notification, $notification->addPlatform($platform3));
         $platforms = $notification->getPlatforms();
-        $this->assertCount(3, $platforms);
+        $this->assertCount(4, $platforms);
         $this->assertSame($platform0, $platforms[0]);
         $this->assertSame($platform1, $platforms[1]);
         $this->assertSame($platform2, $platforms[2]);
+        $this->assertSame($platform3, $platforms[3]);
     }
 
     /**
@@ -143,6 +147,15 @@ class NotificationTest extends TestCase
         $android = new Android();
         $this->assertSame($notification, $notification->setAndroid($android));
         $this->assertSame($android, $notification->getAndroid());
+    }
+
+    public function testGetSetHuawei()
+    {
+        $notification = new Notification();
+        $this->assertNull($notification->getAndroid());
+        $huawei = new Huawei();
+        $this->assertSame($notification, $notification->setHuawei($huawei));
+        $this->assertSame($huawei, $notification->getHuawei());
     }
 
     /**
@@ -490,7 +503,8 @@ class NotificationTest extends TestCase
                     Platform::windows8(),
                     Platform::amazon(),
                     Platform::safari(),
-                    Platform::chrome()
+                    Platform::chrome(),
+                    Platform::huawei()
                 ]
             )
             ->setDevices(
@@ -519,6 +533,21 @@ class NotificationTest extends TestCase
             )
             ->setAndroid(
                 Android::create()
+                    ->setBadges(5)
+                    ->setBanner('http://example.com/banner.png')
+                    ->setCustomIcon('http://example.com/image.png')
+                    ->setGcmTtl(3600)
+                    ->setHeader('Header')
+                    ->setIbc('#AA9966')
+                    ->setIcon('icon')
+                    ->setLed('#4455cc')
+                    ->setPriority(-1)
+                    ->setRootParams(['key' => 'value'])
+                    ->setSound('push.mp3')
+                    ->setVibration(true)
+            )
+            ->setHuawei(
+                Huawei::create()
                     ->setBadges(5)
                     ->setBanner('http://example.com/banner.png')
                     ->setCustomIcon('http://example.com/image.png')
@@ -590,7 +619,7 @@ class NotificationTest extends TestCase
             ->jsonSerialize();
 
         // Test the generic properties
-        $this->assertCount(65, $array);
+        $this->assertCount(77, $array);
         $this->assertSame('now', $array['send_date']);
         $this->assertSame('America/New_York', $array['timezone']);
         $this->assertTrue($array['ignore_user_timezone']);
@@ -607,7 +636,7 @@ class NotificationTest extends TestCase
         $this->assertSame(0, $array['minimize_link']);
         $this->assertCount(1, $array['data']);
         $this->assertSame('json data', $array['data']['custom']);
-        $this->assertCount(10, $array['platforms']);
+        $this->assertCount(11, $array['platforms']);
         $this->assertSame(1, $array['platforms'][0]);
         $this->assertSame(2, $array['platforms'][1]);
         $this->assertSame(3, $array['platforms'][2]);
@@ -618,6 +647,7 @@ class NotificationTest extends TestCase
         $this->assertSame(9, $array['platforms'][7]);
         $this->assertSame(10, $array['platforms'][8]);
         $this->assertSame(11, $array['platforms'][9]);
+        $this->assertSame(17, $array['platforms'][10]);
         $this->assertCount(1, $array['devices']);
         $this->assertSame('dec301908b9ba8df85e57a58e40f96f523f4c2068674f5fe2ba25cdc250a2a41', $array['devices'][0]);
         $this->assertSame('FILTER_NAME', $array['filter']);
@@ -659,6 +689,20 @@ class NotificationTest extends TestCase
         $this->assertSame(['key' => 'value'], $array['android_root_params']);
         $this->assertSame('push.mp3', $array['android_sound']);
         $this->assertSame(1, $array['android_vibration']);
+
+        // Test Huawei parameters
+        $this->assertSame(5, $array['huawei_android_badges']);
+        $this->assertSame('http://example.com/banner.png', $array['huawei_android_banner']);
+        $this->assertSame('http://example.com/image.png', $array['huawei_android_custom_icon']);
+        $this->assertSame(3600, $array['huawei_android_gcm_ttl']);
+        $this->assertSame('Header', $array['huawei_android_header']);
+        $this->assertSame('#AA9966', $array['huawei_android_ibc']);
+        $this->assertSame('icon', $array['huawei_android_icon']);
+        $this->assertSame('#4455cc', $array['huawei_android_led']);
+        $this->assertSame(-1, $array['huawei_android_priority']);
+        $this->assertSame(['key' => 'value'], $array['huawei_android_root_params']);
+        $this->assertSame('push.mp3', $array['huawei_android_sound']);
+        $this->assertSame(1, $array['huawei_android_vibration']);
 
         // Test BlackBerry parameters
         $this->assertSame('header', $array['blackberry_header']);
