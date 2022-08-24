@@ -714,7 +714,6 @@ class Notification implements \JsonSerializable
             $json,
             $this->aDM,
             $this->android,
-            $this->huawei,
             $this->blackBerry,
             $this->chrome,
             $this->firefox,
@@ -722,7 +721,8 @@ class Notification implements \JsonSerializable
             $this->mac,
             $this->safari,
             $this->wNS,
-            $this->wP
+            $this->wP,
+            $this->huawei
         );
     }
 
