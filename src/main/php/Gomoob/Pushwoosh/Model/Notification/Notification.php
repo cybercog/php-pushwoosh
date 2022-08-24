@@ -346,7 +346,6 @@ class Notification implements \JsonSerializable
         return $this->android;
     }
 
-
     /**
      * Gets the object which contains specific Pushwoosh notification informations for BlackBerry.
      *
