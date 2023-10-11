@@ -666,7 +666,7 @@ class Notification implements \JsonSerializable
      *
      * @return array a PHP which can be passed to the 'json_encode' PHP method.
      */
-    public function jsonSerialize()
+    public function jsonSerialize(): mixed
     {
         $json = [];
     

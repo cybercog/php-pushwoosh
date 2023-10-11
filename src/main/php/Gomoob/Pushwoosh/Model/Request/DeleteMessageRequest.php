@@ -55,7 +55,7 @@ class DeleteMessageRequest extends AbstractRequest
     /**
      * {@inheritdoc}
      */
-    public function jsonSerialize()
+    public function jsonSerialize(): mixed
     {
         // The 'auth' parameter must have been set
         if (!isset($this->auth)) {

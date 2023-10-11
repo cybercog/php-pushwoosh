@@ -129,7 +129,7 @@ final class Huawei implements \JsonSerializable
         return $this->vibration;
     }
 
-    public function jsonSerialize()
+    public function jsonSerialize(): mixed
     {
         $json = [];
 

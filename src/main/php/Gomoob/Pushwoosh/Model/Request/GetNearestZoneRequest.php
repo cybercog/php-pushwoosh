@@ -106,7 +106,7 @@ class GetNearestZoneRequest extends AbstractRequest
     /**
      * {@inheritdoc}
      */
-    public function jsonSerialize()
+    public function jsonSerialize(): mixed
     {
         // The 'application' parameter must have been defined.
         if (!isset($this->application)) {

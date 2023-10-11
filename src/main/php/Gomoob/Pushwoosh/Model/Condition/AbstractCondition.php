@@ -66,7 +66,7 @@ abstract class AbstractCondition implements ICondition
     /**
      * {@inheritDoc}
      */
-    public function jsonSerialize()
+    public function jsonSerialize(): mixed
     {
         return [
             $this->tagName,

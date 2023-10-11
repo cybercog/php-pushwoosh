@@ -31,7 +31,7 @@ class PushwooshException extends \Exception
      * @param \Exception $previous A previous exception which leads to a creation of this exception.
      * @param array $data Additional data / details to attach to the exception.
      */
-    public function __construct($message = null, $code = null, $previous = null, array $data = [])
+    public function __construct($message = '', $code = 0, $previous = null, array $data = [])
     {
         parent::__construct($message, $code, $previous);
         

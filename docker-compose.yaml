@@ -1,0 +1,19 @@
+version: "3.9"
+services:
+  app:
+    container_name: php-pushwoosh-app
+    image: php-pushwoosh-app
+    build:
+      context: ./
+      dockerfile: ./.docker/php/Dockerfile
+    restart: unless-stopped
+    working_dir: /app
+    volumes:
+      - ./:/app
+      - ./.docker/php/www.conf:/usr/local/etc/php-fpm.d/www.conf:ro
+    networks:
+      - php_pushwoosh
+
+networks:
+  php_pushwoosh:
+    driver: bridge
