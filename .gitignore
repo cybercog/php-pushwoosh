@@ -1,9 +1,3 @@
-/node_modules
 /vendor
-/target
-/_site/
-/Gemfile.lock
-/phpdocumentor/
-/build/
 .phpunit.result.cache
 composer.lock
