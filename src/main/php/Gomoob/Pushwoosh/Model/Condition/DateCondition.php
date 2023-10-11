@@ -99,7 +99,7 @@ class DateCondition extends AbstractCondition
     /**
      * {@inheritDoc}
      */
-    public function jsonSerialize()
+    public function jsonSerialize(): mixed
     {
         $operandWithString = null;
         

@@ -112,7 +112,7 @@ class CreateMessageRequest extends AbstractRequest
     /**
      * {@inheritdoc}
      */
-    public function jsonSerialize()
+    public function jsonSerialize(): mixed
     {
         // One of the 'application' or 'applicationsGroup' parameter must have been defined.
         if (!isset($this->application) && !isset($this->applicationsGroup)) {

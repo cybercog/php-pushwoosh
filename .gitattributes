@@ -1,6 +1,7 @@
 * text=auto
 
 /src/test export-ignore
+/.docker export-ignore
 /.buildpath export-ignore
 /.coveralls.yml export-ignore
 /.gitattributes export-ignore
