@@ -23,16 +23,25 @@ class IOS implements \JsonSerializable
     private $apnsTrimContent;
 
     private $badges;
-    
+
     /**
      * The iOS 8 category ID from Pushwoosh.
      *
      * @var int
      */
     private $categoryId;
-    
+
     private $rootParams;
     private $sound;
+
+    /**
+     * Identifier to group related notifications.
+     * Messages with the same thread ID will be grouped on the lock screen and in the Notification Center.
+     *
+     * @var string|null
+     */
+    private $threadId;
+
     private $ttl;
     private $trimContent;
 
@@ -50,7 +59,7 @@ class IOS implements \JsonSerializable
     {
         return $this->badges;
     }
-    
+
     /**
      * Gets the iOS 8 category ID from Pushwoosh.
      *
@@ -70,6 +79,14 @@ class IOS implements \JsonSerializable
     {
         return $this->sound;
 
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getThreadId()
+    {
+        return $this->threadId;
     }
 
     public function getTtl()
@@ -93,14 +110,14 @@ class IOS implements \JsonSerializable
         return $this->trimContent;
 
     }
-    
+
     /**
      * {@inheritdoc}
      */
     public function jsonSerialize()
     {
         $json = [];
-    
+
         isset($this->apnsTrimContent) ? $json['apns_trim_content'] = intval($this->apnsTrimContent) : false;
         isset($this->badges) ? $json['ios_badges'] = $this->badges : false;
         isset($this->categoryId) ? $json['ios_category_id'] = $this->categoryId : false;
@@ -108,9 +125,13 @@ class IOS implements \JsonSerializable
         isset($this->sound) ? $json['ios_sound'] = $this->sound : false;
         isset($this->ttl) ? $json['ios_ttl'] = $this->ttl : false;
         isset($this->trimContent) ? $json['ios_trim_content'] = intval($this->trimContent) : false;
-    
+
+        if ($this->threadId !== null) {
+            $json['ios_thread_id'] = $this->threadId;
+        }
+
         return $json;
-    
+
     }
 
     /**
@@ -135,7 +156,7 @@ class IOS implements \JsonSerializable
         return $this;
 
     }
-    
+
     /**
      * Sets the iOS 8 category ID from Pushwoosh.
      *
@@ -146,7 +167,7 @@ class IOS implements \JsonSerializable
     public function setCategoryId($categoryId)
     {
         $this->categoryId = $categoryId;
-         
+
         return $this;
     }
 
@@ -161,6 +182,16 @@ class IOS implements \JsonSerializable
     public function setSound($sound)
     {
         $this->sound = $sound;
+
+        return $this;
+    }
+
+    /**
+     * @param string|null $threadId
+     */
+    public function setThreadId($threadId)
+    {
+        $this->threadId = $threadId;
 
         return $this;
     }

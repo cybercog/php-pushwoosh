@@ -39,6 +39,13 @@ final class HuaweiTest extends TestCase
         $this->assertSame(3600, $huawei->getGcmTtl());
     }
 
+    public function testGetSetGroupId()
+    {
+        $huawei = new Huawei();
+        $this->assertSame($huawei, $huawei->setGroupId('test_group'));
+        $this->assertSame('test_group', $huawei->getGroupId());
+    }
+
     public function testGetSetHeader()
     {
         $huawei = new Huawei();
@@ -102,6 +109,7 @@ final class HuaweiTest extends TestCase
             ->setBadges(5)
             ->setCustomIcon('http://example.com/image.png')
             ->setGcmTtl(3600)
+            ->setGroupId('test_group')
             ->setHeader('Header')
             ->setIbc('#AA9966')
             ->setIcon('icon')
@@ -117,6 +125,7 @@ final class HuaweiTest extends TestCase
         $this->assertSame(5, $array['huawei_android_badges']);
         $this->assertSame('http://example.com/image.png', $array['huawei_android_custom_icon']);
         $this->assertSame(3600, $array['huawei_android_gcm_ttl']);
+        $this->assertSame('test_group', $array['huawei_android_group_id']);
         $this->assertSame('Header', $array['huawei_android_header']);
         $this->assertSame('#AA9966', $array['huawei_android_ibc']);
         $this->assertSame('icon', $array['huawei_android_icon']);
