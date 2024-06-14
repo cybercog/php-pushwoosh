@@ -537,6 +537,7 @@ class NotificationTest extends TestCase
                     ->setBanner('http://example.com/banner.png')
                     ->setCustomIcon('http://example.com/image.png')
                     ->setGcmTtl(3600)
+                    ->setGroupId('test_group')
                     ->setHeader('Header')
                     ->setIbc('#AA9966')
                     ->setIcon('icon')
@@ -552,6 +553,7 @@ class NotificationTest extends TestCase
                     ->setBanner('http://example.com/banner.png')
                     ->setCustomIcon('http://example.com/image.png')
                     ->setGcmTtl(3600)
+                    ->setGroupId('test_group')
                     ->setHeader('Header')
                     ->setIbc('#AA9966')
                     ->setIcon('icon')
@@ -579,6 +581,7 @@ class NotificationTest extends TestCase
                     ->setCategoryId('1')
                     ->setRootParams(['aps' => ['content-available' => '1']])
                     ->setSound('sound file.wav')
+                    ->setThreadId('test_thread')
                     ->setTtl(3600)
                     ->setTrimContent(true)
             )
@@ -681,6 +684,7 @@ class NotificationTest extends TestCase
         $this->assertSame('http://example.com/banner.png', $array['android_banner']);
         $this->assertSame('http://example.com/image.png', $array['android_custom_icon']);
         $this->assertSame(3600, $array['android_gcm_ttl']);
+        $this->assertSame('test_group', $array['android_group_id']);
         $this->assertSame('Header', $array['android_header']);
         $this->assertSame('#AA9966', $array['android_ibc']);
         $this->assertSame('icon', $array['android_icon']);
@@ -695,6 +699,7 @@ class NotificationTest extends TestCase
         $this->assertSame('http://example.com/banner.png', $array['huawei_android_banner']);
         $this->assertSame('http://example.com/image.png', $array['huawei_android_custom_icon']);
         $this->assertSame(3600, $array['huawei_android_gcm_ttl']);
+        $this->assertSame('test_group', $array['huawei_android_group_id']);
         $this->assertSame('Header', $array['huawei_android_header']);
         $this->assertSame('#AA9966', $array['huawei_android_ibc']);
         $this->assertSame('icon', $array['huawei_android_icon']);
@@ -719,6 +724,7 @@ class NotificationTest extends TestCase
         $this->assertSame('1', $array['ios_category_id']);
         $this->assertSame(['aps' => ['content-available' => '1']], $array['ios_root_params']);
         $this->assertSame('sound file.wav', $array['ios_sound']);
+        $this->assertSame('test_thread', $array['ios_thread_id']);
         $this->assertSame(3600, $array['ios_ttl']);
         $this->assertSame(1, $array['ios_trim_content']);
 

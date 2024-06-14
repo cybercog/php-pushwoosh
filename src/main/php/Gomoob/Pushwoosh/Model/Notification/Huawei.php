@@ -25,6 +25,12 @@ final class Huawei implements \JsonSerializable
     private $gcmTtl;
 
     /**
+     * Identifier to group related notifications.
+     * Messages with the same thread ID will be grouped in the Notification Center.
+     */
+    private ?string $groupId;
+
+    /**
      * @var string|null
      */
     private $header;
@@ -89,6 +95,11 @@ final class Huawei implements \JsonSerializable
         return $this->gcmTtl;
     }
 
+    public function getGroupId(): ?string
+    {
+        return $this->groupId;
+    }
+
     public function getHeader()
     {
         return $this->header;
@@ -147,6 +158,10 @@ final class Huawei implements \JsonSerializable
 
         if ($this->gcmTtl !== null) {
             $json['huawei_android_gcm_ttl'] = $this->gcmTtl;
+        }
+
+        if ($this->groupId !== null) {
+            $json['huawei_android_group_id'] = $this->groupId;
         }
 
         if ($this->header !== null) {
@@ -208,6 +223,13 @@ final class Huawei implements \JsonSerializable
     public function setGcmTtl($gcmTtl)
     {
         $this->gcmTtl = $gcmTtl;
+
+        return $this;
+    }
+
+    public function setGroupId(?string $groupId): self
+    {
+        $this->groupId = $groupId;
 
         return $this;
     }
