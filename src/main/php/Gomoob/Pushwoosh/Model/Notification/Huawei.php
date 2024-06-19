@@ -27,6 +27,11 @@ final class Huawei implements \JsonSerializable
     /**
      * @var string|null
      */
+    private $groupId;
+
+    /**
+     * @var string|null
+     */
     private $header;
 
     /**
@@ -89,6 +94,14 @@ final class Huawei implements \JsonSerializable
         return $this->gcmTtl;
     }
 
+    /**
+     * @return string|null
+     */
+    public function getGroupId()
+    {
+        return $this->groupId;
+    }
+
     public function getHeader()
     {
         return $this->header;
@@ -147,6 +160,10 @@ final class Huawei implements \JsonSerializable
 
         if ($this->gcmTtl !== null) {
             $json['huawei_android_gcm_ttl'] = $this->gcmTtl;
+        }
+
+        if ($this->groupId !== null) {
+            $json['huawei_android_group_id'] = $this->groupId;
         }
 
         if ($this->header !== null) {
@@ -208,6 +225,16 @@ final class Huawei implements \JsonSerializable
     public function setGcmTtl($gcmTtl)
     {
         $this->gcmTtl = $gcmTtl;
+
+        return $this;
+    }
+
+    /**
+     * @param string|null $groupId
+     */
+    public function setGroupId($groupId)
+    {
+        $this->groupId = $groupId;
 
         return $this;
     }

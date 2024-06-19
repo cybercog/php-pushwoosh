@@ -22,7 +22,7 @@ class Android implements \JsonSerializable
      * @var int
      */
     private $badges;
-    
+
     private $banner;
     private $customIcon;
 
@@ -33,24 +33,33 @@ class Android implements \JsonSerializable
      * @var int
      */
     private $gcmTtl;
+
+    /**
+     * Identifier to group related notifications.
+     * Messages with the same thread ID will be grouped in the Notification Center.
+     *
+     * @var string|null
+     */
+    private $groupId;
+
     private $header;
-    
+
     /**
      * The icon background color on Lollipop, #RRGGBB, #AARRGGBB, "red", "black", "yellow", etc.
      *
      * @var string
      */
     private $ibc;
-    
+
     private $icon;
-    
+
     /**
      * The LED hex color, device will do its best approximation.
      *
      * @var string
      */
     private $led;
-    
+
     /**
      * The priority of the push in the Android push drawer, valid values are -2, -1, 0, 1 and 2.
      *
@@ -60,7 +69,7 @@ class Android implements \JsonSerializable
 
     private $rootParams;
     private $sound;
-    
+
     /**
      * A boolean used to force vibration for high-priority pushes.
      *
@@ -113,12 +122,20 @@ class Android implements \JsonSerializable
 
     }
 
+    /**
+     * @return string|null
+     */
+    public function getGroupId()
+    {
+        return $this->groupId;
+    }
+
     public function getHeader()
     {
         return $this->header;
 
     }
-    
+
     /**
      * Gets the icon background color on Lollipop, #RRGGBB, #AARRGGBB, "red", "black", "yellow", etc.
      *
@@ -133,7 +150,7 @@ class Android implements \JsonSerializable
     {
         return $this->icon;
     }
-    
+
     /**
      * Gets the LED hex color, device will do its best approximation.
      *
@@ -143,7 +160,7 @@ class Android implements \JsonSerializable
     {
         return $this->led;
     }
-    
+
     /**
      * Gets priority of the push in the Android push drawer, valid values are -2, -1, 0, 1 and 2.
      *
@@ -163,7 +180,7 @@ class Android implements \JsonSerializable
     {
         return $this->sound;
     }
-    
+
     /**
      * Gets the boolean used to force vibration for high-priority pushes.
      *
@@ -173,14 +190,14 @@ class Android implements \JsonSerializable
     {
         return $this->vibration;
     }
-    
+
     /**
      * {@inheritdoc}
      */
     public function jsonSerialize()
     {
         $json = [];
-    
+
         isset($this->badges) ? $json['android_badges'] = $this->badges : false;
         isset($this->banner) ? $json['android_banner'] = $this->banner : false;
         isset($this->customIcon) ? $json['android_custom_icon'] = $this->customIcon : false;
@@ -193,9 +210,13 @@ class Android implements \JsonSerializable
         isset($this->rootParams) ? $json['android_root_params'] = $this->rootParams : false;
         isset($this->sound) ? $json['android_sound'] = $this->sound : false;
         isset($this->vibration) ? $json['android_vibration'] = ($this->vibration ? 1 : 0) : false;
-    
+
+        if ($this->groupId !== null) {
+            $json['android_group_id'] = $this->groupId;
+        }
+
         return $json;
-    
+
     }
 
     /**
@@ -208,7 +229,7 @@ class Android implements \JsonSerializable
     public function setBadges($badges)
     {
         $this->badges = $badges;
-        
+
         return $this;
     }
 
@@ -242,6 +263,16 @@ class Android implements \JsonSerializable
         return $this;
     }
 
+    /**
+     * @param string|null $groupId
+     */
+    public function setGroupId($groupId)
+    {
+        $this->groupId = $groupId;
+
+        return $this;
+    }
+
     public function setHeader($header)
     {
         $this->header = $header;
@@ -249,7 +280,7 @@ class Android implements \JsonSerializable
         return $this;
 
     }
-    
+
     /**
      * Sets the icon background color on Lollipop, #RRGGBB, #AARRGGBB, "red", "black", "yellow", etc.
      *
@@ -260,7 +291,7 @@ class Android implements \JsonSerializable
     public function setIbc($ibc)
     {
         $this->ibc = $ibc;
-         
+
         return $this;
     }
 
@@ -270,7 +301,7 @@ class Android implements \JsonSerializable
 
         return $this;
     }
-    
+
     /**
      * Sets the LED hex color, device will do its best approximation.
      *
@@ -281,10 +312,10 @@ class Android implements \JsonSerializable
     public function setLed($led)
     {
         $this->led = $led;
-        
+
         return $this;
     }
-    
+
     /**
      * Sets the priority of the push in the Android push drawer, valid values are -2, -1, 0, 1 and 2.
      *
@@ -295,7 +326,7 @@ class Android implements \JsonSerializable
     public function setPriority($priority)
     {
         $this->priority = $priority;
-         
+
         return $this;
     }
 
@@ -312,7 +343,7 @@ class Android implements \JsonSerializable
 
         return $this;
     }
-    
+
     /**
      * Sets the boolean used to force vibration for high-priority pushes.
      *
@@ -323,7 +354,7 @@ class Android implements \JsonSerializable
     public function setVibration($vibration)
     {
         $this->vibration = $vibration;
-        
+
         return $this;
     }
 }

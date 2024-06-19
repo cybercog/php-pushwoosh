@@ -6,3 +6,4 @@
 /phpdocumentor/
 /build/
 composer.lock
+.idea/
