@@ -25,7 +25,7 @@ class AndroidTest extends TestCase
     {
         $this->assertNotNull(Android::create());
     }
-    
+
     /**
      * Test method for the <code>#getBadges()</code> and <code>setBadges($badges)</code> functions.
      */
@@ -66,6 +66,13 @@ class AndroidTest extends TestCase
         $this->assertSame(3600, $android->getGcmTtl());
     }
 
+    public function testGetSetGroupId()
+    {
+        $android = new Android();
+        $this->assertSame($android, $android->setGroupId('test_group'));
+        $this->assertSame('test_group', $android->getGroupId());
+    }
+
     /**
      * Test method for the <code>#getHeader()</code> and <code>#setHeader($header)</code> functions.
      */
@@ -85,7 +92,7 @@ class AndroidTest extends TestCase
         $this->assertSame($android, $android->setIbc('#AA9966'));
         $this->assertSame('#AA9966', $android->getIbc());
     }
-    
+
     /**
      * Test method for the <code>#getIcon()</code> and <code>#setIcon($icon)</code> functions.
      */
@@ -105,7 +112,7 @@ class AndroidTest extends TestCase
         $this->assertSame($android, $android->setLed('#4455cc'));
         $this->assertSame('#4455cc', $android->getLed());
     }
-    
+
     /**
      * Test method for the <code>#getPriority()</code> and <code>#setPriority($priority)</code> functions.
      */
@@ -115,7 +122,7 @@ class AndroidTest extends TestCase
         $this->assertSame($android, $android->setPriority(-1));
         $this->assertSame(-1, $android->getPriority());
     }
-    
+
     /**
      * Test method for the <code>#getRootParams()</code> and <code>#setRootParams($rootParams)</code> functions.
      */
@@ -145,7 +152,7 @@ class AndroidTest extends TestCase
         $this->assertSame($android, $android->setVibration(true));
         $this->assertTrue($android->isVibration());
     }
-    
+
     /**
      * Test method for the <code>#jsonSerialize()</code> function.
      */
@@ -156,6 +163,7 @@ class AndroidTest extends TestCase
             ->setBadges(5)
             ->setCustomIcon('http://example.com/image.png')
             ->setGcmTtl(3600)
+            ->setGroupId('test_group')
             ->setHeader('Header')
             ->setIbc('#AA9966')
             ->setIcon('icon')
@@ -166,11 +174,12 @@ class AndroidTest extends TestCase
             ->setVibration(true)
             ->jsonSerialize();
 
-        $this->assertCount(12, $array);
+        $this->assertCount(13, $array);
         $this->assertSame('http://example.com/banner.png', $array['android_banner']);
         $this->assertSame(5, $array['android_badges']);
         $this->assertSame('http://example.com/image.png', $array['android_custom_icon']);
         $this->assertSame(3600, $array['android_gcm_ttl']);
+        $this->assertSame('test_group', $array['android_group_id']);
         $this->assertSame('Header', $array['android_header']);
         $this->assertSame('#AA9966', $array['android_ibc']);
         $this->assertSame('icon', $array['android_icon']);
