@@ -120,7 +120,7 @@ final class HuaweiTest extends TestCase
             ->setVibration(true)
             ->jsonSerialize();
 
-        $this->assertCount(12, $array);
+        $this->assertCount(13, $array);
         $this->assertSame('http://example.com/banner.png', $array['huawei_android_banner']);
         $this->assertSame(5, $array['huawei_android_badges']);
         $this->assertSame('http://example.com/image.png', $array['huawei_android_custom_icon']);

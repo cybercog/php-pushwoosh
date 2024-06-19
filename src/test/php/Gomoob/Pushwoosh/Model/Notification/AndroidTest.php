@@ -174,7 +174,7 @@ class AndroidTest extends TestCase
             ->setVibration(true)
             ->jsonSerialize();
 
-        $this->assertCount(12, $array);
+        $this->assertCount(13, $array);
         $this->assertSame('http://example.com/banner.png', $array['android_banner']);
         $this->assertSame(5, $array['android_badges']);
         $this->assertSame('http://example.com/image.png', $array['android_custom_icon']);

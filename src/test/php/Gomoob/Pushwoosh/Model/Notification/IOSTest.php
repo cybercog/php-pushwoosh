@@ -120,7 +120,7 @@ class IOSTest extends TestCase
             ->setTrimContent(true)
             ->jsonSerialize();
 
-        $this->assertCount(7, $array);
+        $this->assertCount(8, $array);
         $this->assertSame(1, $array['apns_trim_content']);
         $this->assertSame(5, $array['ios_badges']);
         $this->assertSame('1', $array['ios_category_id']);
