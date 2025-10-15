@@ -237,6 +237,13 @@ class Notification implements \JsonSerializable
      * @var int
      */
     private $sendRate;
+
+    /**
+     * If set to true, throttling limit will not be applied to this specific push notification
+     *
+     * @var bool
+     */
+    private $sendRateAvoid;
     
     /**
      * The timezone to use with the `sendDate` property, if ignored UTC-0 is default in "send_date".
@@ -617,6 +624,14 @@ class Notification implements \JsonSerializable
     {
         return $this->sendRate;
     }
+
+    /**
+     * @return bool
+     */
+    public function getSendRateAvoid()
+    {
+        return $this->sendRateAvoid;
+    }
     
     /**
      * Gets the timezone to use with the `sendDate` property, if ignored UTC-0 is default in `sendDate`. See
@@ -685,8 +700,9 @@ class Notification implements \JsonSerializable
         isset($this->pageId) ? $json['page_id'] = $this->pageId : false;
         isset($this->remotePage) ? $json['remote_page'] = $this->remotePage : false;
         isset($this->richPageId) ? $json['rich_page_id'] = $this->richPageId : false;
-        isset($this->sendRate)? $json['send_rate'] = $this->sendRate : false;
-        isset($this->timezone)? $json['timezone'] = $this->timezone : false;
+        isset($this->sendRate) ? $json['send_rate'] = $this->sendRate : false;
+        isset($this->timezone) ? $json['timezone'] = $this->timezone : false;
+        isset($this->sendRateAvoid) ? $json['send_rate_avoid'] = $this->sendRateAvoid : false;
 
         if (isset($this->conditions)) {
             $conditionsArray = [];
@@ -1128,6 +1144,18 @@ class Notification implements \JsonSerializable
     {
         $this->sendRate = $sendRate;
     
+        return $this;
+    }
+
+    /**
+     * @param bool $sendRateAvoid
+     *
+     * @return \Gomoob\Pushwoosh\Model\Notification\Notification this instance.
+     */
+    public function setSendRateAvoid($sendRateAvoid)
+    {
+        $this->sendRateAvoid = $sendRateAvoid;
+
         return $this;
     }
 
