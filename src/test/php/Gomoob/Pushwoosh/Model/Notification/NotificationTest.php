@@ -419,6 +419,17 @@ class NotificationTest extends TestCase
     }
 
     /**
+     * Test method for the `getSendRateAvoid()` and `setSendRateAvoid($sendRateAvoid)` functions.
+     */
+    public function testGetSetSendRateAvoid()
+    {
+        $notification = new Notification();
+        $this->assertNull($notification->getSendRateAvoid());
+        $this->assertSame($notification, $notification->setSendRateAvoid(true));
+        $this->assertTrue($notification->getSendRateAvoid());
+    }
+
+    /**
      * Test method for the `getTimezone()` and `setTimezone($timezone)` functions.
      */
     public function testGetSetTimezone()
@@ -485,6 +496,7 @@ class NotificationTest extends TestCase
             ->setRemotePage('http://myremoteurl.com')
             ->setRichPageId(42)
             ->setSendRate(200)
+            ->setSendRateAvoid(true)
             ->setLink('http://google.com')
             ->setMinimizeLink(MinimizeLink::none())
             ->setData(
@@ -622,7 +634,7 @@ class NotificationTest extends TestCase
             ->jsonSerialize();
 
         // Test the generic properties
-        $this->assertCount(80, $array);
+        $this->assertCount(81, $array);
         $this->assertSame('now', $array['send_date']);
         $this->assertSame('America/New_York', $array['timezone']);
         $this->assertTrue($array['ignore_user_timezone']);
@@ -635,6 +647,7 @@ class NotificationTest extends TestCase
         $this->assertSame('http://myremoteurl.com', $array['remote_page']);
         $this->assertSame(42, $array['rich_page_id']);
         $this->assertSame(200, $array['send_rate']);
+        $this->assertTrue($array['send_rate_avoid']);
         $this->assertSame('http://google.com', $array['link']);
         $this->assertSame(0, $array['minimize_link']);
         $this->assertCount(1, $array['data']);
