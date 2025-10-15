@@ -626,8 +626,6 @@ class Notification implements \JsonSerializable
     }
 
     /**
-     * Gets throttling is applied
-     *
      * @return bool
      */
     public function getSendRateAvoid()
@@ -1150,8 +1148,6 @@ class Notification implements \JsonSerializable
     }
 
     /**
-     * Sets need to apply throttling
-     *
      * @param bool $sendRateAvoid
      *
      * @return \Gomoob\Pushwoosh\Model\Notification\Notification this instance.
